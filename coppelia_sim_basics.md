@@ -29,7 +29,7 @@ Installing the simulator
     Once the simulator starts up, you should see the following screen.
     >The version of the simulator used here is `4.4.0 rev 0`, if you are using another version , there could be slight differences. 
 
-    ![Start Screen](/images/coppelia_start_screen.png)
+    ![Start Screen](/images/coppelia/coppelia_start_screen.png)
 
 5. If you saw the screen,  coppelia simualtor has successfully been installed on your system.
 
@@ -49,18 +49,29 @@ Our robot is going to be a 2 DOF robot arm. It is going to consist of :
 - One cylindrical link attached to the base by a revolute joint.
 
 1. Go to Menu --> Add --> Primitive Shape --> Cubiod, set dimensions
-x = 0.1, y = 0.1 and z = 0.2, rename the shape to 'bot_base'.
-you will notice that even though we gave a height of 0.2 m the base looks small.
-That is because objects are created with origin as (0, 0, 0). So to see the full object , we should move (apply translation) to the object.
+x = 0.1, y = 0.1 and z = 0.2, rename the shape to 'robot_base'. you should see an object like this
 
-2. Click on the `bot_base` model from the scene hierarchy and then click on the translation button from the tool bar.
-It looks like this.
+    ![Robot Base](/images/coppelia/bot_base_screen.png)
 
-    ![translation](/images/translation_button.png)
+2. Next , we will add a revolute joint.
+   Go to Menu --> Add --> Joint --> Revolute and rename it to `shoulder_joint`. This will create a joint at the origin, to place the joint at our desired position (i.e top of the cuboid) we need to apply translation to the joint.
 
-    Once you click on the button you should see a small window pop up, in the window , go to the `positions` tab and make sure the `Relative to` option is set to `World`. Then set the value of Z to 0.1, this will set the absolute postion (position relative to world frame) of the `bot_base` object to (0, 0, 1) and we can see the entire model above the floor like seen in the below image.
+   - Select the joint from scene hierarchy
+   - click on the translation button 
 
-    ![Robot Base](/images/bot_base_screen.png)
+        ![](/images/coppelia/translation_button.png)
+   - A pop up window will appear, select the position tab and you should see options like this.
+
+        ![](/images/coppelia/translation_pop_up.png)
+
+   - Keep the `Relative to:` option set to `World` and set value of Z to 0.25 so that the joint origin is slightly above the robot 
+   base
+
+   - The default axis of rotation for the revolute joint in coppelia sim is the z-axis, so we do not need to modify orientation since the axis of rotation we want is along z as well.
+   
+   This should give you a result like this.
+
+   ![Shoulder Joint](/images/coppelia/shoulder_joint.png)
 
 
 
