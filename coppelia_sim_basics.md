@@ -121,3 +121,33 @@ x = 0.1, y = 0.1 and z = 0.2, rename the shape to 'robot_base'. you should see a
 
 
     The robot is now ready to be used.
+
+
+Install ZeroMQ Remote API
+---
+
+We are going to use the ZeroMQ python remote API provided by CoppeliaSim.
+
+To keep things clean, we will create a python virtual environment to work in.
+If you dont have python3-venv installed yet, you should install it first.
+
+
+1. Set variable used by cmake to find CoppeliaSim
+    > `export COPPELIASIM_ROOT_DIR=/home/<user>/coppelia/CoppeliaSim`
+
+2. Follow instructions on https://github.com/CoppeliaRobotics/zmqRemoteApi to install the library.
+
+
+Setup env to use the api from python
+---
+
+
+1. create a venv named coppelia_env 
+  `$ python3 -m venv ~/copellia/coppelia_env`
+    
+    > Notice that we are putting all the dependencies for this project in a folder called `coppelia` at `/home/<user>/coppelia`
+
+2. Activate the env using `$ source ~/coppelia/coppelia_env/bin/activate`
+
+3. Follow instructions on https://www.coppeliarobotics.com/helpFiles/en/zmqRemoteApiOverview.htm to install required python modules.
+
