@@ -13,6 +13,9 @@ After studyuing this tutorial you will understand how to:
 - interact with the simulator and simulation using the ZeroMQ API
 
 
+    > Note : The tutorial assumes you have a folder named `coppelia` in your home directory, so you should create it first
+    `$ mkdir ~/coppelia`
+
 Installing the simulator
 ---
 
@@ -143,8 +146,6 @@ If you dont have python3-venv installed yet, you should install it first.
 1. create a venv named coppelia_env 
   `$ python3 -m venv ~/copellia/coppelia_env`
     
-    > Notice that we are putting all the dependencies for this project in a folder called `coppelia` at `/home/<user>/coppelia`
-
 2. Activate the env using `$ source ~/coppelia/coppelia_env/bin/activate`
 
 3. Follow instructions on https://www.coppeliarobotics.com/helpFiles/en/zmqRemoteApiOverview.htm to install required python modules.
