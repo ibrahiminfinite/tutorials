@@ -91,3 +91,33 @@ x = 0.1, y = 0.1 and z = 0.2, rename the shape to 'robot_base'. you should see a
     ![Shoulder link](/images/coppelia/shoulder_link.png)
 
 
+4. Now we have all the parts we need, but they exist as independent components and are not connected to each other. In this step we will create those connections that describe the structue of the robot.
+
+    - Select the `shoulder_joint` from scene hierarchy , press `ctrl` and select `robot_base`.
+    - From Menu --> Edit --> Make last selected object parent
+    
+    This makes `shoulder_joint` attached to `robot_base`
+
+    - Select `shoulder_link` , press `ctrl` and select `shoulder_joint` 
+    - Select 'Make last selected object parent' from Edit
+
+    Now the `shoudler_link` is attached to `shoulder_joint` and you have an overall structure like this.
+
+    ![](/images/coppelia/robot_structure.png)
+
+5. Once we have our structure, we need to tell the simulator how our `shoulder_joint` behaves.
+
+    - Double click on the joint icon next to `shoudler_joint` in the scene hierarchy to open the object properties window.
+
+        ![](/images/coppelia/scene_object_properties.png)
+
+    - Selct `Dynamic Properties Dialog` to open the joint dynamics properties.
+
+        ![](/images/coppelia/joint_dynamic_properties.png)
+
+    - Set `Control Mode` to velocity and set target velocity and torque to 0
+
+    - close the property windows.
+
+
+    The robot is now ready to be used.
