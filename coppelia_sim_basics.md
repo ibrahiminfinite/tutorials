@@ -128,10 +128,6 @@ Install ZeroMQ Remote API
 
 We are going to use the ZeroMQ python remote API provided by CoppeliaSim.
 
-To keep things clean, we will create a python virtual environment to work in.
-If you dont have python3-venv installed yet, you should install it first.
-
-
 1. Set variable used by cmake to find CoppeliaSim
     > `export COPPELIASIM_ROOT_DIR=/home/<user>/coppelia/CoppeliaSim`
 
@@ -141,6 +137,8 @@ If you dont have python3-venv installed yet, you should install it first.
 Setup env to use the api from python
 ---
 
+To keep things clean, we will create a python virtual environment to work in.
+If you dont have python3-venv installed yet, you should install it first.
 
 1. create a venv named coppelia_env 
   `$ python3 -m venv ~/copellia/coppelia_env`
@@ -151,3 +149,55 @@ Setup env to use the api from python
 
 3. Follow instructions on https://www.coppeliarobotics.com/helpFiles/en/zmqRemoteApiOverview.htm to install required python modules.
 
+
+
+Controlling the robot using the remote API from python
+---
+
+API Reference : https://www.coppeliarobotics.com/helpFiles/en/apiFunctions.htm
+
+
+```Python
+
+import sys
+import time
+# Add the path to  zmq python client to system paths
+sys.path.append("/home/dark/coppelia/zmqRemoteApi/clients/python")
+
+from zmqRemoteApi import RemoteAPIClient
+
+client = RemoteAPIClient()
+
+# Enable client stepping so that we can manually step through the simulation
+client.setStepping(True)
+
+# Get the simulation object
+sim = client.getObject('sim')
+
+# From the simulation get the handle for the shoulder joint
+shoulder = sim.getObject('/robot_base/shoulder_joint')
+
+# Check the state of the joint
+jointPosition = sim.getJointPosition(shoulder)
+jointVelocity = sim.getJointVelocity(shoulder)
+
+# Set desired joint velocity
+targetVelocity = 2  # deg/s
+maxForce = 0.1 # Nm
+sim.setJointTargetVelocity(shoulder, targetVelocity)
+sim.setJointMaxForce(shoulder, maxForce)
+
+# Simulation loop
+# We will simulate 100 steps
+
+sim.startSimulation()
+
+for _ in range(50):
+    # Run one simulation step
+    client.step()
+    time.sleep(0.1)
+    print(sim.getJointPosition(shoulder))
+
+sim.stopSimulation()
+
+```
