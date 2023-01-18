@@ -37,13 +37,13 @@ Installing the simulator
 Creating a simple robot
 ---
 
-Before proceeding further, you should familiarize with the interface of the simuator so that you know what the terms beign talked about are referring to.
+Before proceeding further, you should familiarize with the interface of the simuator so that you know what the terms being talked about are referring to.
 you can find the refrence in the  `User Interface` section of https://www.coppeliarobotics.com/helpFiles/index.html
 
 
 Now that the simulator is ready for use, we will create our own simple robot arm to explore and understand how robot/models are represented in CoppeliaSim.
 
-Our robot is going to be a 2 DOF robot arm. It is going to consist of :
+Our robot is going to be a 1 DOF robot arm. It is going to consist of :
 
 - A tall cuboidal base 
 - One cylindrical link attached to the base by a revolute joint.
@@ -188,7 +188,7 @@ sim.setJointTargetVelocity(shoulder, targetVelocity)
 sim.setJointMaxForce(shoulder, maxForce)
 
 # Simulation loop
-# We will simulate 100 steps
+# We will simulate 50 steps
 
 sim.startSimulation()
 
