@@ -73,5 +73,21 @@ x = 0.1, y = 0.1 and z = 0.2, rename the shape to 'robot_base'. you should see a
 
    ![Shoulder Joint](/images/coppelia/shoulder_joint.png)
 
+3. The next step is to add a link, select `Cylinder` from the `Primitive Shapes` and set value of x = 0.01 and z = 0.2. This will create a cylinder but you cannot see it at this point since it is inside the base. To place it properly , we need to apply some translations and rotations.
+
+    - Select the cylinder from scene hierarchy 
+    - Select the translation button and go to position tab like before
+    - Set y = 0.1 and z = 0.25 
+    - Close the window and click on the rotation button
+
+      ![](/images/coppelia/rotation_button.png)
+
+    - Go to orientation tab, set `Aplha` = -90
+
+    ![](/images/coppelia/orientation_window.png)
+
+    Now you should see the cylinder properly placed like this.
+
+    ![Shoulder link](/images/coppelia/shoulder_link.png)
 
 
